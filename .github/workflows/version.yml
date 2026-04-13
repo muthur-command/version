@@ -21,7 +21,7 @@ env:
   COSIGN_VERSION: "v2.2.3"
   MCOS_VERSION_S3_BUCKET: version-muthur-command
   MCOS_VERSION_S3_PUBLIC_BASE: https://s3.muthur-command.com
-  MCOS_VERSION_PUBLIC_BASE: https://version.muthur-command.io
+  MCOS_VERSION_PUBLIC_BASE: https://version.muthur-command.com
   SIGNED_FILES: "apparmor.txt apparmor_beta.txt apparmor_dev.txt apparmor_stable.txt beta.json dev.json stable.json"
 
 jobs:
@@ -121,6 +121,10 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
+          if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
+            echo "::error::Missing AWS credentials. In the GitHub repo, set Actions secrets AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY (S3-compatible keys for MCOS_VERSION_S3_PUBLIC_BASE / MCOS_VERSION_S3_BUCKET). See README.md."
+            exit 1
+          fi
           aws s3 sync . "s3://${{ env.MCOS_VERSION_S3_BUCKET }}/" \
             --endpoint-url "${{ env.MCOS_VERSION_S3_PUBLIC_BASE }}" \
             --exclude "*" --include "${{ matrix.path }}.sig"
@@ -149,6 +153,10 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: |
+        if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
+          echo "::error::Missing AWS credentials. In the GitHub repo, set Actions secrets AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY. See README.md."
+          exit 1
+        fi
         for file in ${{ needs.prepare.outputs.files }}; do
           if [[ "$file" =~ \.txt|\.json|\.png ]]; then
             aws s3 sync . "s3://${{ env.MCOS_VERSION_S3_BUCKET }}/" \
