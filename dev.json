@@ -1,24 +1,41 @@
 {
   "channel": "dev",
   "supervisor": "2026.04.0.dev0808",
-  "homeassistant": {
+  "muthurcommand": {
     "default": "2026.5.0.dev202604090313",
+    "qemux86": "unused",
     "qemux86-64": "2026.5.0.dev202604090313",
+    "qemuarm": "unused",
     "qemuarm-64": "2026.5.0.dev202604090313",
     "generic-x86-64": "2026.5.0.dev202604090313",
     "intel-nuc": "2026.5.0.dev202604090313",
     "khadas-vim3": "2026.5.0.dev202604090313",
+    "raspberrypi": "unused",
+    "raspberrypi2": "unused",
+    "raspberrypi3": "unused",
     "raspberrypi3-64": "2026.5.0.dev202604090313",
+    "raspberrypi4": "unused",
     "raspberrypi4-64": "2026.5.0.dev202604090313",
     "raspberrypi5-64": "2026.5.0.dev202604090313",
     "yellow": "2026.5.0.dev202604090313",
     "green": "2026.5.0.dev202604090313",
+    "tinker": "unused",
     "odroid-c2": "2026.5.0.dev202604090313",
     "odroid-c4": "2026.5.0.dev202604090313",
     "odroid-m1": "2026.5.0.dev202604090313",
-    "odroid-n2": "2026.5.0.dev202604090313"
+    "odroid-n2": "2026.5.0.dev202604090313",
+    "odroid-xu": "unused"
   },
-  "hassos": {
+  "cli": "2026.03.0.dev3101",
+  "dns": "2026.03.0.dev2301",
+  "audio": "2026.03.0.dev2402",
+  "observer": "2026.03.0.dev2301",
+  "multicast": "2026.03.0.dev2302",
+  "mc_bd": "0.1.0",
+  "mc_fd": "0.1.0",
+  "postgresql": "16.3",
+  "redis": "7.2.4",
+  "mcos": {
     "ova": "18.0.dev20260331",
     "rpi3-64": "18.0.dev20260331",
     "rpi4-64": "18.0.dev20260331",
@@ -34,7 +51,7 @@
     "generic-aarch64": "18.0.dev20260331",
     "khadas-vim3": "18.0.dev20260331"
   },
-  "hassos-upgrade": {
+  "mcos_upgrade": {
     "15": "15.2",
     "14": "15.2",
     "13": "15.2",
@@ -49,19 +66,18 @@
     "4": "4.20",
     "3": "3.13"
   },
-  "ota": "https://os-artifacts.home-assistant.io/{version}/{os_name}_{board}-{version}.raucb",
-  "cli": "2026.03.0.dev3101",
-  "dns": "2026.03.0.dev2301",
-  "audio": "2026.03.0.dev2402",
-  "multicast": "2026.03.0.dev2302",
-  "observer": "2026.03.0.dev2301",
+  "ota": "https://os-artifacts.muthur-command.io/{version}/{os_name}_{board}-{version}.raucb",
   "images": {
-    "core": "ghcr.io/home-assistant/{machine}-homeassistant",
-    "supervisor": "ghcr.io/home-assistant/{arch}-hassio-supervisor",
-    "cli": "ghcr.io/home-assistant/{arch}-hassio-cli",
-    "audio": "ghcr.io/home-assistant/{arch}-hassio-audio",
-    "dns": "ghcr.io/home-assistant/{arch}-hassio-dns",
-    "observer": "ghcr.io/home-assistant/{arch}-hassio-observer",
-    "multicast": "ghcr.io/home-assistant/{arch}-hassio-multicast"
+    "core": "ghcr.io/muthur-command/{arch}-muthurcommand:{machine}",
+    "supervisor": "ghcr.io/muthur-command/{arch}-mcio-supervisor",
+    "cli": "ghcr.io/muthur-command/{arch}-mcio-cli",
+    "audio": "ghcr.io/muthur-command/{arch}-mcio-audio",
+    "dns": "ghcr.io/muthur-command/{arch}-mcio-dns",
+    "observer": "ghcr.io/muthur-command/{arch}-mcio-observer",
+    "multicast": "ghcr.io/muthur-command/{arch}-mcio-multicast",
+    "mc_bd": "ghcr.io/muthur-command/{arch}-mc-bd",
+    "mc_fd": "ghcr.io/muthur-command/mc-fd",
+    "postgresql": "docker.io/library/postgres",
+    "redis": "docker.io/library/redis"
   }
 }

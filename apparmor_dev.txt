@@ -2,7 +2,7 @@ abi <abi/3.0>,
 
 #include <tunables/global>
 
-profile hassio-supervisor flags=(attach_disconnected,mediate_deleted) {
+profile mcio-supervisor flags=(attach_disconnected,mediate_deleted) {
   #include <abstractions/base>
   #include <abstractions/python>
 
@@ -63,7 +63,7 @@ profile hassio-supervisor flags=(attach_disconnected,mediate_deleted) {
     /usr/bin/git mrix,
     /usr/libexec/git-core/* ix,
 
-    deny /data/homeassistant rw,
+    deny /data/muthurcommand rw,
     deny /data/ssl rw,
 
     /** r,

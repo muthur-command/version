@@ -7,9 +7,9 @@ on:
         description: 'File(s) to run action against (space separated)'
         required: true
   pull_request:
-    branches: ["master"]
+    branches: ["mc"]
   push:
-    branches: ["master"]
+    branches: ["mc"]
     paths:
     - '*.txt'
     - '*.json'
@@ -19,6 +19,9 @@ on:
 env:
   PYTHON_VERSION: "3.10"
   COSIGN_VERSION: "v2.2.3"
+  MCOS_VERSION_S3_BUCKET: version-muthur-command
+  MCOS_VERSION_S3_PUBLIC_BASE: https://s3.muthur-command.com
+  MCOS_VERSION_PUBLIC_BASE: https://version.muthur-command.io
   SIGNED_FILES: "apparmor.txt apparmor_beta.txt apparmor_dev.txt apparmor_stable.txt beta.json dev.json stable.json"
 
 jobs:
@@ -29,8 +32,13 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
  
-    - name: Lint with JQ
-      uses: home-assistant/actions/helpers/jq@master
+    - name: Lint JSON with jq
+      run: |
+        sudo apt-get update -qq && sudo apt-get install -y -qq jq
+        for f in stable.json beta.json dev.json; do
+          echo "Checking $f"
+          jq empty "$f"
+        done
 
   prepare:
     name: Prepare
@@ -89,7 +97,7 @@ jobs:
         uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4.1.0
         with:
           registry: ghcr.io
-          username: home-assistant
+          username: muthur-command
           password: ${{ secrets.GITHUB_TOKEN }}
       
       - uses: sigstore/cosign-installer@cad07c2e89fa2edd6e2d7bab4c1aa38e53f76003 # v4.1.1
@@ -113,7 +121,9 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          aws s3 sync . s3://version.home-assistant.io --exclude "*" --include "${{ matrix.path }}.sig"
+          aws s3 sync . "s3://${{ env.MCOS_VERSION_S3_BUCKET }}/" \
+            --endpoint-url "${{ env.MCOS_VERSION_S3_PUBLIC_BASE }}" \
+            --exclude "*" --include "${{ matrix.path }}.sig"
 
 
   upload:
@@ -141,28 +151,37 @@ jobs:
       run: |
         for file in ${{ needs.prepare.outputs.files }}; do
           if [[ "$file" =~ \.txt|\.json|\.png ]]; then
-            aws s3 sync . s3://version.home-assistant.io --exclude "*" --include "$file"
+            aws s3 sync . "s3://${{ env.MCOS_VERSION_S3_BUCKET }}/" \
+              --endpoint-url "${{ env.MCOS_VERSION_S3_PUBLIC_BASE }}" \
+              --exclude "*" --include "$file"
           fi
         done
 
-    - name: Gather files for cache flush
-      id: flush
-      run: |
-        declare -a files
-        for file in ${{ needs.prepare.outputs.files }}; do
-          if [[ "$file" =~ \.txt|\.json ]]; then
-            files+=("\"https:\/\/version.home-assistant.io\/$file\", ")
-            if [[ "${{ env.SIGNED_FILES }}" =~ $file ]]; then
-              files+=("\"https:\/\/version.home-assistant.io\/$file.sig\", ")
-            fi
-          fi
-        done
-        echo "files=[$(echo ${files[@]} | rev | cut -c 2- | rev)]" >> $GITHUB_OUTPUT
-
-    - name: Flush CloudFlare cache
-      run: |
-        curl --silent --show-error --fail -X POST \
-          "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE }}/purge_cache" \
-          -H "Authorization: Bearer ${{ secrets.CF_PURGE_TOKEN }}" \
-          -H "Content-Type: application/json" \
-          --data '{"files": ${{ steps.flush.outputs.files }}}'
+    # - name: Gather files for cache flush
+    #   id: flush
+    #   run: |
+    #     declare -a files
+    #     for file in ${{ needs.prepare.outputs.files }}; do
+    #       if [[ "$file" =~ \.txt|\.json ]]; then
+    #         files+=("\"${{ env.MCOS_VERSION_S3_PUBLIC_BASE }}/$file\", ")
+    #         if [[ "${{ env.SIGNED_FILES }}" =~ $file ]]; then
+    #           files+=("\"${{ env.MCOS_VERSION_S3_PUBLIC_BASE }}/$file.sig\", ")
+    #         fi
+    #       fi
+    #     done
+    #     echo "files=[$(echo ${files[@]} | rev | cut -c 2- | rev)]" >> $GITHUB_OUTPUT
+    #
+    # - name: Flush CloudFlare cache
+    #   env:
+    #     CF_ZONE: ${{ secrets.CF_ZONE }}
+    #     CF_PURGE_TOKEN: ${{ secrets.CF_PURGE_TOKEN }}
+    #   run: |
+    #     if [ -z "$CF_ZONE" ] || [ -z "$CF_PURGE_TOKEN" ]; then
+    #       echo "Skipping Cloudflare purge (CF_ZONE / CF_PURGE_TOKEN not set)"
+    #       exit 0
+    #     fi
+    #     curl --silent --show-error --fail -X POST \
+    #       "https://api.cloudflare.com/client/v4/zones/${CF_ZONE}/purge_cache" \
+    #       -H "Authorization: Bearer ${CF_PURGE_TOKEN}" \
+    #       -H "Content-Type: application/json" \
+    #       --data '{"files": ${{ steps.flush.outputs.files }}}'
