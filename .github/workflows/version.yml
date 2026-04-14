@@ -22,7 +22,6 @@ env:
   MCOS_VERSION_S3_BUCKET: version-muthur-command
   MCOS_VERSION_S3_PUBLIC_BASE: http://s3.muthur-command.com
   MCOS_VERSION_PUBLIC_BASE: http://version.muthur-command.com
-  # Set repo Variable MCOS_S3_NO_VERIFY_SSL=true only if the endpoint TLS/SNI is broken (lab). Production: fix cert/SAN on the server.
   MCOS_S3_NO_VERIFY_SSL: ${{ vars.MCOS_S3_NO_VERIFY_SSL }}
   SIGNED_FILES: "apparmor.txt apparmor_beta.txt apparmor_dev.txt apparmor_stable.txt beta.json dev.json stable.json"
 
