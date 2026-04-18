@@ -1,6 +1,6 @@
 #!/bin/sh
 
-version=$(curl -s https://version.muthur-command.io/stable.json | jq -r '.supervisor // "latest"' || echo "latest")
+version=$(curl -s http://version.muthur-command.com/stable.json | jq -r '.supervisor // "latest"' || echo "latest")
 arch=$(docker image ls | grep -- '-mcio-observer'  | awk '{print $1}' | awk -F/ '{print $3}' | awk -F- '{print $1}')
 
 docker pull "ghcr.io/muthur-command/${arch}-mcio-supervisor:${version}"

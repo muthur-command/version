@@ -1,7 +1,7 @@
 {
   "os_list": [
     {
-      "name": "MCOS 17.2 (RPi 5)",
+      "name": "Muthur Command OS 17.2 (RPi 5)",
       "description": "Muthur Command OS: local-first automation stack.",
       "url": "https://github.com/muthur-command/mcos/releases/download/17.2/mcos_rpi5-64-17.2.img.xz",
       "icon": "https://version.muthur-command.com/brand/logo.png",
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "name": "MCOS 17.2 (RPi 4/400)",
+      "name": "Muthur Command OS 17.2 (RPi 4/400)",
       "description": "Muthur Command OS: local-first automation stack.",
       "url": "https://github.com/muthur-command/mcos/releases/download/17.2/mcos_rpi4-64-17.2.img.xz",
       "icon": "https://version.muthur-command.com/brand/logo.png",
@@ -31,7 +31,7 @@
       ]
     },
     {
-      "name": "MCOS 17.2 (RPi 3)",
+      "name": "Muthur Command OS 17.2 (RPi 3)",
       "description": "Muthur Command OS: local-first automation stack.",
       "url": "https://github.com/muthur-command/mcos/releases/download/17.2/mcos_rpi3-64-17.2.img.xz",
       "icon": "https://version.muthur-command.com/brand/logo.png",
@@ -46,8 +46,8 @@
       ]
     },
     {
-      "name": "MCOS 17.2 (Yellow)",
-      "description": "MCOS for Yellow-class hardware. Flash to NVMe or Compute Module (rpiboot) as documented.",
+      "name": "Muthur Command OS 17.2 (Yellow)",
+      "description": "Muthur Command OS for Yellow-class hardware. Flash to NVMe or Compute Module (rpiboot) as documented.",
       "url": "https://github.com/muthur-command/mcos/releases/download/17.2/mcos_yellow-17.2.img.xz",
       "icon": "https://version.muthur-command.com/rpi-imager-yellow-installer.png",
       "extract_size": 2147483648,
@@ -62,7 +62,7 @@
       ]
     },
     {
-      "name": "MCOS Installer for Yellow",
+      "name": "Muthur Command OS installer for Yellow",
       "description": "USB installer image for Yellow Kit (CM4). Follow hardware documentation after flashing.",
       "url": "https://github.com/muthur-command/yellow-buildroot/releases/download/yellow-installer-20231025/yellow-installer-20231025.img.xz",
       "icon": "https://version.muthur-command.com/rpi-imager-yellow-installer.png",

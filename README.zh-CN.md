@@ -1,6 +1,6 @@
-# MCOS 版本通道数据
+# Muthur Command OS 版本通道数据
 
-本仓库发布面向 **Supervisor**、**OS** 与 **mcio pre-pull** 消费方的通道元数据与签名文件。
+本仓库发布面向 **Supervisor**、**Muthur Command OS** 镜像与 **mcio** pre-pull 消费方的通道元数据与签名文件。
 
 ## 发布文件
 
@@ -19,6 +19,8 @@
 | `MCOS_VERSION_S3_BUCKET` | 目标桶名称。若使用 AList 的 S3 映射，此值需与映射暴露的桶名一致。 |
 | `MCOS_VERSION_S3_PUBLIC_BASE` | S3 兼容 API 地址（传给 `aws s3 --endpoint-url`）。 |
 | `MCOS_VERSION_PUBLIC_BASE` | 客户端下载 `stable.json` 与静态资源时使用的公开 HTTPS 基础地址。 |
+
+变量名仍使用 **`MCOS_*`** 前缀，以便与既有 **Muthur Command OS** CI 及基础设施对齐；取值则指向你的 **Muthur Command** 部署环境（例如 `muthur-command.com` 相关地址）。
 
 > `MCOS_VERSION_S3_PUBLIC_BASE` 与 `MCOS_VERSION_PUBLIC_BASE` 可以相同，也可以分离（例如：S3 API 域名 + CDN/下载域名）。
 

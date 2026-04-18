@@ -1,6 +1,6 @@
-# MCOS Version Channel Data
+# Muthur Command OS — version channel data
 
-This repository publishes channel metadata and signatures for **Supervisor**, **OS**, and **mcio pre-pull** consumers.
+This repository publishes channel metadata and signatures for **Supervisor**, **Muthur Command OS** images, and **mcio** pre-pull consumers.
 
 中文文档: [`README.zh-CN.md`](./README.zh-CN.md)
 
@@ -21,6 +21,8 @@ Configure `version/.github/workflows/version.yml` and repository secrets before 
 | `MCOS_VERSION_S3_BUCKET` | Target bucket name. If using AList S3 mapping, this must match the exposed bucket name. |
 | `MCOS_VERSION_S3_PUBLIC_BASE` | S3-compatible API endpoint (used as `aws s3 --endpoint-url`). |
 | `MCOS_VERSION_PUBLIC_BASE` | Public HTTPS base for clients downloading `stable.json` and assets. |
+
+Variable names keep the **`MCOS_*`** prefix for compatibility with existing **Muthur Command OS** CI and infrastructure; values point at your **Muthur Command** deployment (for example `muthur-command.com` endpoints).
 
 > `MCOS_VERSION_S3_PUBLIC_BASE` and `MCOS_VERSION_PUBLIC_BASE` can be the same host, or split (for example: S3 API endpoint + CDN/public domain).
 
