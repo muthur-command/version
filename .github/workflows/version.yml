@@ -19,7 +19,7 @@ on:
 # Muthur Command OS version-channel publishing. Env names keep MCOS_* prefix for CI compatibility.
 env:
   PYTHON_VERSION: "3.10"
-  COSIGN_VERSION: "v2.2.3"
+  COSIGN_VERSION: "v3.0.5"
   MCOS_VERSION_S3_BUCKET: version-muthur-command
   MCOS_VERSION_S3_PUBLIC_BASE: http://s3.muthur-command.com
   # MCOS_VERSION_PUBLIC_BASE: http://version.muthur-command.com
