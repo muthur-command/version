@@ -27,7 +27,7 @@
     "odroid-xu": "unused"
   },
   "cli": "2026.04.0.dev1901",
-  "dns": "mc",
+  "dns": "2026.04.0.dev1901",
   "audio": "mc",
   "observer": "2026.04.0.dev1901",
   "multicast": "2026.04.0.dev1901",
