@@ -26,7 +26,7 @@
     "odroid-n2": "unused",
     "odroid-xu": "unused"
   },
-  "cli": "mc_2026.04.0",
+  "cli": "2026.04.1",
   "dns": "mc_2026.04.0",
   "audio": "mc_2026.04.0",
   "observer": "2026.04.1",
