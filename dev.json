@@ -29,7 +29,7 @@
   "cli": "mc",
   "dns": "mc",
   "audio": "mc",
-  "observer": "mc",
+  "observer": "2026.04.0.dev1901",
   "multicast": "mc",
   "mc_bd": "0.1.0",
   "mc_fd": "0.1.0",
