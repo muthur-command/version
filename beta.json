@@ -30,7 +30,7 @@
   "dns": "mc_2026.04.0",
   "audio": "mc_2026.04.0",
   "observer": "2026.04.1",
-  "multicast": "mc_2026.04.0",
+  "multicast": "2026.04.1",
   "mc_bd": "0.1.0",
   "mc_fd": "0.1.0",
   "postgresql": "16.3",
