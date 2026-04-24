@@ -32,7 +32,7 @@
   "observer": "2026.02.0",
   "multicast": "2026.02.0",
   "mc_bd": "0.1.0",
-  "mc_fd": "0.1.0",
+  "mc_fd": "mc_fd",
   "postgresql": "16.3",
   "redis": "7.2.4",
   "mcos": {
