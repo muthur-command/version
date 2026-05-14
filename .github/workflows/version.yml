@@ -21,8 +21,8 @@ env:
   PYTHON_VERSION: "3.10"
   COSIGN_VERSION: "v3.0.5"
   MCOS_VERSION_S3_BUCKET: version-muthur-command
-  MCOS_VERSION_S3_PUBLIC_BASE: http://s3.muthur-command.com
-  # MCOS_VERSION_PUBLIC_BASE: http://version.muthur-command.com
+  MCOS_VERSION_S3_PUBLIC_BASE: https://s3.muthur-command.com
+  # MCOS_VERSION_PUBLIC_BASE: https://version.muthur-command.com
   MCOS_S3_NO_VERIFY_SSL: ${{ vars.MCOS_S3_NO_VERIFY_SSL }}
   SIGNED_FILES: "apparmor.txt apparmor_beta.txt apparmor_dev.txt apparmor_stable.txt beta.json dev.json stable.json"
 
