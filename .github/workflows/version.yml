@@ -22,8 +22,12 @@ env:
   COSIGN_VERSION: "v3.0.5"
   MCOS_VERSION_S3_BUCKET: version-muthur-command
   MCOS_VERSION_S3_PUBLIC_BASE: https://s3.muthur-command.com
-  # MCOS_VERSION_PUBLIC_BASE: https://version.muthur-command.com
+  MCOS_VERSION_PUBLIC_BASE: https://version.muthur-command.com
   MCOS_S3_NO_VERIFY_SSL: ${{ vars.MCOS_S3_NO_VERIFY_SSL }}
+  # Avoid aws-chunked uploads: AList/openresty S3-compatible backends store the raw
+  # chunk framing in the object body, breaking curl | jq on stable.json etc.
+  AWS_REQUEST_CHECKSUM_CALCULATION: when_required
+  AWS_RESPONSE_CHECKSUM_VALIDATION: when_required
   SIGNED_FILES: "apparmor.txt apparmor_beta.txt apparmor_dev.txt apparmor_stable.txt beta.json dev.json stable.json"
 
 jobs:
@@ -176,6 +180,22 @@ jobs:
             aws "${AWS_SSL[@]}" s3 sync . "s3://${{ env.MCOS_VERSION_S3_BUCKET }}/" \
               --endpoint-url "${{ env.MCOS_VERSION_S3_PUBLIC_BASE }}" \
               --exclude "*" --include "$file"
+          fi
+        done
+
+    - name: Verify published JSON is plain JSON
+      run: |
+        for file in ${{ needs.prepare.outputs.files }}; do
+          if [[ "$file" =~ \.json$ ]]; then
+            url="${{ env.MCOS_VERSION_PUBLIC_BASE }}/$file"
+            body=$(curl -fsSL "$url")
+            if [[ "${body:0:1}" != "{" ]]; then
+              echo "::error::$url is not plain JSON (object may contain aws-chunked framing)"
+              printf '%s\n' "$body" | head -3
+              exit 1
+            fi
+            printf '%s\n' "$body" | jq empty
+            echo "OK: $url"
           fi
         done
 
