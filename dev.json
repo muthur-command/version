@@ -33,8 +33,8 @@
   "multicast": "2026.05.1.dev2300",
   "mc_bd": "2026.05.0.dev2301",
   "mc_fd": "2026.05.0.dev2301",
-  "postgresql": "16.3",
-  "redis": "7.2.4",
+  "postgresql": "16.3-alpine",
+  "redis": "7.2.4-alpine",
   "mcos": {
     "ova": "18.0.dev20260331",
     "rpi3-64": "18.0.dev20260331",
