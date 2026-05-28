@@ -1,6 +1,6 @@
 {
   "channel": "dev",
-  "supervisor": "2025.05.3.dev2702",
+  "supervisor": "2026.05.1.dev2802",
   "muthurcommand": {
     "default": "2026.5.0.dev202604090313",
     "qemux86": "unused",
