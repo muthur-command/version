@@ -1,6 +1,6 @@
 # Muthur Command OS — version channel data
 
-This repository publishes channel metadata and signatures for **Supervisor**, **Muthur Command OS** images, and **mcio** pre-pull consumers.
+This repository publishes channel metadata and signatures for **Supervisor**, **Muthur Command OS** images, and **mcos** pre-pull consumers.
 
 中文文档: [`README.zh-CN.md`](./README.zh-CN.md)
 

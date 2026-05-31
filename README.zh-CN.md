@@ -1,6 +1,6 @@
 # Muthur Command OS 版本通道数据
 
-本仓库发布面向 **Supervisor**、**Muthur Command OS** 镜像与 **mcio** pre-pull 消费方的通道元数据与签名文件。
+本仓库发布面向 **Supervisor**、**Muthur Command OS** 镜像与 **mcos** pre-pull 消费方的通道元数据与签名文件。
 
 ## 发布文件
 
