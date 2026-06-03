@@ -30,7 +30,7 @@
   "dns": "2026.05.0.dev3101",
   "audio": "2026.06.0.dev0303",
   "observer": "2026.06.0.dev0303",
-  "multicast": "2026.05.1.dev3101",
+  "multicast": "2026.06.0.dev0303",
   "mc_bd": "2026.06.0.dev0301",
   "mc_fd": "2026.06.0.dev0301",
   "postgresql": "16.3-alpine",
