@@ -1,6 +1,6 @@
 {
   "channel": "dev",
-  "supervisor": "2026.06.0.dev0408",
+  "supervisor": "2026.06.2.dev1003",
   "muthurcommand": {
     "default": "2026.5.0.dev202604090313",
     "qemux86": "unused",
@@ -31,8 +31,8 @@
   "audio": "2026.06.0.dev0402",
   "observer": "2026.06.0.dev0402",
   "multicast": "2026.06.0.dev0402",
-  "mc_bd": "2026.06.0.dev0401",
-  "mc_fd": "2026.06.0.dev0400",
+  "mc_bd": "2026.06.2.dev1200",
+  "mc_fd": "2026.06.1.dev1200",
   "landingpage": "landingpage",
   "postgresql": "16.3-alpine",
   "redis": "7.2.4-alpine",
