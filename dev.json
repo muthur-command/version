@@ -33,7 +33,7 @@
   "multicast": "2026.06.0.dev0402",
   "mc_bd": "2026.06.2.dev1200",
   "mc_fd": "2026.06.1.dev1200",
-  "landingpage": "2026.06.0.dev1202",
+  "landingpage": "2026.06.0.dev1203",
   "postgresql": "16.3-alpine",
   "redis": "7.2.4-alpine",
   "mcos": {
