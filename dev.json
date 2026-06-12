@@ -33,6 +33,7 @@
   "multicast": "2026.06.0.dev0402",
   "mc_bd": "2026.06.0.dev0401",
   "mc_fd": "2026.06.0.dev0400",
+  "landingpage": "landingpage",
   "postgresql": "16.3-alpine",
   "redis": "7.2.4-alpine",
   "mcos": {
@@ -76,6 +77,7 @@
     "multicast": "ghcr.io/muthur-command/{arch}-mcos-multicast",
     "mc_bd": "ghcr.io/muthur-command/{arch}-muthurcommand",
     "mc_fd": "ghcr.io/muthur-command/muthurcommand-fd",
+    "landingpage": "ghcr.io/muthur-command/{machine}-muthurcommand",
     "postgresql": "docker.io/library/postgres",
     "redis": "docker.io/library/redis"
   }
