@@ -78,7 +78,7 @@
     "multicast": "ghcr.io/muthur-command/{arch}-mcos-multicast",
     "mc_bd": "ghcr.io/muthur-command/{arch}-muthurcommand",
     "mc_fd": "ghcr.io/muthur-command/muthurcommand-fd",
-    "landingpage": "ghcr.io/muthur-command/{machine}-muthurcommand",
+    "landingpage": "ghcr.io/muthur-command/{machine}-landingpage",
     "postgresql": "docker.io/library/postgres",
     "redis": "docker.io/library/redis"
   }
