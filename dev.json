@@ -24,7 +24,8 @@
     "odroid-c4": "2026.5.0.dev202604090313",
     "odroid-m1": "2026.5.0.dev202604090313",
     "odroid-n2": "2026.5.0.dev202604090313",
-    "odroid-xu": "unused"
+    "odroid-xu": "unused",
+    "mc-neardi-lb200": "unused"
   },
   "cli": "2026.06.0.dev0406",
   "dns": "2026.06.0.dev0402",
@@ -50,7 +51,8 @@
     "odroid-n2": "18.0.dev20260331",
     "generic-x86-64": "18.0.dev20260331",
     "generic-aarch64": "18.0.dev20260331",
-    "khadas-vim3": "18.0.dev20260331"
+    "khadas-vim3": "18.0.dev20260331",
+    "mc-neardi-lb200": "18.0.dev20260331"
   },
   "mcos_upgrade": {
     "15": "15.2",
@@ -67,6 +69,7 @@
     "4": "4.20",
     "3": "3.13"
   },
+  "ota": "https://github.com/muthur-command/operating-system/releases/download/{version}/{os_name}_{board}-{version}.raucb",
   "images": {
     "core": "ghcr.io/muthur-command/{arch}-muthurcommand:{machine}",
     "supervisor": "ghcr.io/muthur-command/{arch}-mcos-supervisor",
