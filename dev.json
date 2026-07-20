@@ -33,7 +33,7 @@
   "observer": "2026.07.0.dev0901",
   "multicast": "2026.06.0.dev0402",
   "mc_bd": "2026.07.0.dev1900",
-  "mc_fd": "2026.07.0.dev1900",
+  "mc_fd": "2026.07.0.dev2000",
   "landingpage": "2026.07.0.dev0902",
   "postgresql": "16.3-alpine",
   "redis": "7.2.4-alpine",
